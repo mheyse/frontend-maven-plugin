@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface NpmRunner {
     public void execute(String args) throws TaskRunnerException;
+    public String executeAndGetResult(String args) throws TaskRunnerException;
 }
 
 final class DefaultNpmRunner extends NodeTaskExecutor implements NpmRunner {

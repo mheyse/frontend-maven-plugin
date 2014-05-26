@@ -9,7 +9,7 @@
 
     <groupId>com.github.eirslett</groupId>
     <artifactId>frontend-plugins</artifactId>
-    <version>0.0.15-SNAPSHOT</version>
+    <version>0.0.15x-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -67,4 +67,24 @@
             </plugins>
         </pluginManagement>
     </build>
+    
+    <repositories>
+        <repository>
+            <id>weissag-maven-snapshot-repo</id>
+            <url>http://scm.weissag.local:8081/artifactory/weissag-local</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>weissag-maven-repo</id>
+            <name>Weiss AG private maven repo</name>
+            <url>http://scm.weissag.local:8081/artifactory/weissag-local</url>
+        </repository>
+        <snapshotRepository>
+            <id>weissag-maven-snapshot-repo</id>
+            <name>Weiss AG private maven repo for snapshots</name>
+            <url>http://scm.weissag.local:8081/artifactory/weissag-local</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>

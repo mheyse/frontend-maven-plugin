@@ -44,6 +44,18 @@ abstract class NodeTaskExecutor {
         }
     }
 
+    public final String executeAndGetResult(String args) throws TaskRunnerException {
+        final String absoluteTaskLocation = workingDirectory + normalize(taskLocation);
+        final List<String> arguments = getArguments(args);
+        logger.info("Running " + taskToString(taskName, arguments) + " in " + workingDirectory);
+
+        try {
+            return new NodeExecutor(workingDirectory, prepend(absoluteTaskLocation, arguments), platform).executeAndGetResult();
+        } catch (ProcessExecutionException e) {
+            throw new TaskRunnerException(taskToString(taskName, arguments) + " failed.");
+        }
+    }
+
     private List<String> getArguments(String args) {
         List<String> arguments =  new ArrayList<String>();
         if(args != null && !args.equals("null") && !args.isEmpty()) {
